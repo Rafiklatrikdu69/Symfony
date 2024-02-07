@@ -6,6 +6,14 @@
     <h1>Article</h1>
 
     <table class="table">
+    <thead>
+			<tr>
+				<th>id</th>
+				<th>Pseudo</th>
+				<th>Actions</th>
+				
+			</tr>
+		</thead>
         <tbody>
             <tr>
                 <th>Id</th>
@@ -23,10 +31,11 @@
                 <th>Pseudo</th>
                 <td>{{ article.pseudo }}</td>
             </tr>
-        </tbody>
+               
            {% for comm in commentaire %}
+           
             <tr>
-                
+             <h1>Commentaire </h1>
                 <td>{{ comm.description }}</td>
                 <td>{{ comm.pseudo }}</td>
                 <td>
@@ -39,6 +48,9 @@
                 <td colspan="5">no records found</td>
             </tr>
         {% endfor %}
+        </tbody>
+
+    
     </table>
 
     <a href="{{ path('app_article_index') }}">back to list</a>

@@ -12,14 +12,25 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-#[Route('/article')]
+#[Route('/home')]
 class ArticleController extends AbstractController
 {
-    #[Route('/', name: 'app_article_index', methods: ['GET'])]
-    public function index(ArticleRepository $articleRepository): Response
+    #[Route('/', name: 'app_article_index', methods: ['GET', 'POST'])]
+    public function index(Request $request,ArticleRepository $articleRepository, EntityManagerInterface $entityManager): Response
     {
-        return $this->render('article/index.html.twig', [
+        $article = new Article();
+        $form = $this->createForm(ArticleType::class, $article);
+        $form->handleRequest($request);
+        
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager->persist($article);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('app_article_index', [], Response::HTTP_SEE_OTHER);
+        }
+        return $this->renderForm('article/index.html.twig', [
             'articles' => $articleRepository->findAll(),
+            'form' =>$form,
         ]);
     }
 
