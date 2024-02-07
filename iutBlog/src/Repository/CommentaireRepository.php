@@ -26,9 +26,9 @@ class CommentaireRepository extends ServiceEntityRepository
     public function findByExampleField($value): array
     {
         return $this->createQueryBuilder('c')
-            ->andWhere('c.id = :val')
+            ->andWhere('c.article = :val')
             ->setParameter('val', $value)
-            ->orderBy('c.id', 'ASC')
+            ->orderBy('c.article', 'ASC')
             ->setMaxResults(10)
             ->getQuery()
             ->getResult()

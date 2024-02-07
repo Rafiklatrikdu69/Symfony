@@ -18,7 +18,7 @@ class CommentaireType extends AbstractType
             ->add('pseudo')
             ->add('article', EntityType::class, [
                 'class' => Article::class,
-'choice_label' => 'description',
+'choice_label' => 'id',
             ])
         ;
     }

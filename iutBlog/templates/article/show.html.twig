@@ -4,34 +4,11 @@
 
 {% block body %}
     <h1>Article</h1>
-
+ 
+ 
     <table class="table">
     <thead>
-			<tr>
-				<th>id</th>
-				<th>Pseudo</th>
-				<th>Actions</th>
-				
-			</tr>
-		</thead>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ article.id }}</td>
-            </tr>
-            <tr>
-                <th>Titre</th>
-                <td>{{ article.titre }}</td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>{{ article.description }}</td>
-            </tr>
-            <tr>
-                <th>Pseudo</th>
-                <td>{{ article.pseudo }}</td>
-            </tr>
-               
+	
            {% for comm in commentaire %}
            
             <tr>

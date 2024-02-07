@@ -5,26 +5,40 @@
 {% block body %}
     <h1>Commentaire</h1>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ commentaire.id }}</td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>{{ commentaire.description }}</td>
-            </tr>
-            <tr>
-                <th>Pseudo</th>
-                <td>{{ commentaire.pseudo }}</td>
-            </tr>
-        </tbody>
-    </table>
+    <section>
+  
+        <div class="article">
+                <p>Id de l'article {{article.id}}</p>
+                <h2> Pseudo : {{article.pseudo}}</h2>
+                <article>{{article.description}}</article>   
+        </div>
+        <section>
+    {% for  comm in commentaire %}
+        <div class="article" id="comm">
+                {# <p>Id du commentaire  {{ comm.id }}</p> #}
+                <h2>Pseudo : {{ comm.pseudo }}</h2>
+                <article> {{ comm.description }}</article>                          
 
+            <a class="button-6" role="button" href="{{ path('app_article_show', {'id': article.id}) }}">show</a>
+
+        </div>
+         {% else %}
+         <label>
+  <input type="checkbox" class="alertCheckbox" autocomplete="off" />
+  <div class="alert error">
+    {# <span class="alertClose">X</span> #}
+    <span class="alertText">Pas de commentaires !</span>
+    {# <br class="clear"/></span> #}
+  </div>
+</label>
+            
+   
+        {% endfor %}
+        
+    </section>
     <a href="{{ path('app_commentaire_index') }}">back to list</a>
 
-    <a href="{{ path('app_commentaire_edit', {'id': commentaire.id}) }}">edit</a>
+    {# <a href="{{ path('app_commentaire_edit', {'id': commentaire.id}) }}">edit</a> #}
 
     {{ include('commentaire/_delete_form.html.twig') }}
 {% endblock %}

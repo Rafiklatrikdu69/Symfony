@@ -2,14 +2,15 @@
 
 namespace App\Controller;
 
+use App\Entity\Article;
 use App\Entity\Commentaire;
 use App\Form\CommentaireType;
-use App\Repository\CommentaireRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Repository\CommentaireRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 #[Route('/commentaire')]
 class CommentaireController extends AbstractController
@@ -43,10 +44,11 @@ class CommentaireController extends AbstractController
     }
 
     #[Route('/{id}', name: 'app_commentaire_show', methods: ['GET'])]
-    public function show(Commentaire $commentaire): Response
+    public function show(Article $article,CommentaireRepository $articleRepository,$id): Response
     {
         return $this->render('commentaire/show.html.twig', [
-            'commentaire' => $commentaire,
+            'article' => $article,
+            'commentaire'=>$articleRepository->findByExampleField($id)
         ]);
     }
 
