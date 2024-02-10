@@ -1,6 +1,18 @@
-{% extends 'base.html.twig' %}
 
-{% block title %}Commentaire{% endblock %}
+ <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
+        {% endblock %}
+
+        {% block javascripts %}
+            {{ encore_entry_script_tags('commentaire') }}
+        {% endblock %}
+    </head>
+{# {% extends 'base.html.twig' %} #}
 
 {% block body %}
     <h1>Commentaire</h1>
@@ -10,7 +22,9 @@
         <div class="article">
                 <p>Id de l'article {{article.id}}</p>
                 <h2> Pseudo : {{article.pseudo}}</h2>
-                <article>{{article.description}}</article>   
+                <article>{{article.description}}</article>  
+            <button class="button-6" role="button" id="myBtnCommentaire">Commenter</button>
+
         </div>
         <section>
     {% for  comm in commentaire %}
@@ -19,7 +33,6 @@
                 <h2>Pseudo : {{ comm.pseudo }}</h2>
                 <article> {{ comm.description }}</article>                          
 
-            <a class="button-6" role="button" href="{{ path('app_article_show', {'id': article.id}) }}">show</a>
 
         </div>
          {% else %}
@@ -30,14 +43,26 @@
     <span class="alertText">Pas de commentaires !</span>
     {# <br class="clear"/></span> #}
   </div>
+
+  
 </label>
             
    
         {% endfor %}
         
     </section>
-    <a href="{{ path('app_commentaire_index') }}">back to list</a>
+    {# <a href="{{ path('app_commentaire_index') }}">back to list</a> #}
+  <div id="myModalComm" class="modal">
 
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    {{ include('commentaire/_form.html.twig') }}
+        {# <a class="button-6" role="button"  href="{{ path('app_article_new') }}">Create new</a> #}
+    {# <p>Some text in the Modal..</p> #}
+  </div>
+
+</div>
     {# <a href="{{ path('app_commentaire_edit', {'id': commentaire.id}) }}">edit</a> #}
 
     {{ include('commentaire/_delete_form.html.twig') }}

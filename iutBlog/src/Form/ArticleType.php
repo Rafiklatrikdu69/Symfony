@@ -15,25 +15,25 @@ class ArticleType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('titre',TextType::class, [
-                'label' => 'Name',
-                'required' => true,
+        ->add('titre',TextType::class, [
+            'label' => 'Name',
+            'required' => true,
             ])
             ->add('description')
             ->add('pseudo')
             ->add('categories', EntityType::class, [
                 'class' => Categorie::class,
                 'choice_label' => 'nom',
-                'multiple' => true,
-                            ])
-                        ;
-                        ;
-    }
-
-    public function configureOptions(OptionsResolver $resolver): void
-    {
-        $resolver->setDefaults([
-            'data_class' => Article::class,
-        ]);
-    }
-}
+                'multiple' => true,//plusieurs categories
+                ])
+                ;
+                ;
+            }
+            
+            public function configureOptions(OptionsResolver $resolver): void
+            {
+                $resolver->setDefaults([
+                    'data_class' => Article::class,
+                ]);
+            }
+        }

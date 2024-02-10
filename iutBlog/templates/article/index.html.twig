@@ -1,4 +1,19 @@
-{% extends 'base.html.twig' %}
+ <head>
+        <meta charset="UTF-8">
+
+        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
+        {% endblock %}
+
+        {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+                      {{ encore_entry_script_tags('commentaire') }}
+        {% endblock %}
+    </head>
+
+
 
 {% block title %}Article index{% endblock %}
 
@@ -12,45 +27,12 @@
                 <h2> Pseudo : {{article.pseudo}}</h2>
                 <article>{{article.description}}</article>                          
 
-            <a class="button-6" role="button" href="{{ path('app_commentaire_show', {'id': article.id}) }}">show</a>
+            <a class="button-6" role="button" href="{{ path('app_commentaire_show', {'id': article.id}) }}">Ajouter</a>
+            <button class="button-6" role="button" id="myBtnCommentaire">Commenter</button>
 
         </div>
         {% endfor %}
     </section>
-    {# <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Titre</th>
-                <th>Description</th>
-                <th>Pseudo</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for article in articles %}
-            <tr>
-                <td>{{ article.id }}</td>
-                <td>{{ article.titre }}</td>
-                <td>{{ article.description }}</td>
-                <td>{{ article.pseudo }}</td>
-                <td>
-                    <a href="{{ path('app_article_show', {'id': article.id}) }}">show</a>
-                    <a href="{{ path('app_article_edit', {'id': article.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="5">no records found</td>
-            </tr>
-        {% endfor %}
-            <tbody>
-     
-        </tbody>
-    </table> #}
-
-
-
     
 <h2>Modal Example</h2>
 
@@ -65,7 +47,18 @@
     <span class="close">&times;</span>
     {{ include('article/_form.html.twig') }}
         {# <a class="button-6" role="button"  href="{{ path('app_article_new') }}">Create new</a> #}
-    <p>Some text in the Modal..</p>
+    {# <p>Some text in the Modal..</p> #}
+  </div>
+
+</div>
+<div id="myModalComm" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    {{ include('commentaire/_form.html.twig') }}
+        {# <a class="button-6" role="button"  href="{{ path('app_article_new') }}">Create new</a> #}
+    {# <p>Some text in the Modal..</p> #}
   </div>
 
 </div>
