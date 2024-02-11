@@ -29,13 +29,13 @@ class ArticleController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->persist($article);
             $entityManager->flush();
-
+           
             return $this->redirectToRoute('app_article_index', [], Response::HTTP_SEE_OTHER);
         }
         if ($form_comm->isSubmitted() && $form_comm->isValid()) {
             $entityManager->persist($commentaire);
             $entityManager->flush();
-
+       
             return $this->redirectToRoute('app_article_index', [], Response::HTTP_SEE_OTHER);
         }
         return $this->renderForm('article/index.html.twig', [

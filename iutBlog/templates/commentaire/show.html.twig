@@ -15,9 +15,15 @@
 {# {% extends 'base.html.twig' %} #}
 
 {% block body %}
+	<nav class="nav">
+		<div class="nav__title">IUT Blog</div>
+		<div class="nav__list">
+             <button class="button-2"> <a href="/home" id="home">Home</a></button>	
+		</div>
+	</nav>
     <h1>Commentaire</h1>
-
-    <section>
+<main>
+    <aside>
   
         <div class="article">
                 <p>Id de l'article {{article.id}}</p>
@@ -26,7 +32,8 @@
             <button class="button-6" role="button" id="myBtnCommentaire">Commenter</button>
 
         </div>
-        <section>
+        </aside>
+        <section class="commentaire">
     {% for  comm in commentaire %}
         <div class="article" id="comm">
                 {# <p>Id du commentaire  {{ comm.id }}</p> #}
@@ -43,27 +50,22 @@
     <span class="alertText">Pas de commentaires !</span>
     {# <br class="clear"/></span> #}
   </div>
-
-  
-</label>
-            
-   
+    </label>
         {% endfor %}
-        
     </section>
+    </main>
     {# <a href="{{ path('app_commentaire_index') }}">back to list</a> #}
   <div id="myModalComm" class="modal">
 
   <!-- Modal content -->
   <div class="modal-content">
-    <span class="close">&times;</span>
+    <span class="closeComm">&times;</span>
     {{ include('commentaire/_form.html.twig') }}
-        {# <a class="button-6" role="button"  href="{{ path('app_article_new') }}">Create new</a> #}
-    {# <p>Some text in the Modal..</p> #}
+
   </div>
 
 </div>
-    {# <a href="{{ path('app_commentaire_edit', {'id': commentaire.id}) }}">edit</a> #}
+ 
 
     {{ include('commentaire/_delete_form.html.twig') }}
 {% endblock %}

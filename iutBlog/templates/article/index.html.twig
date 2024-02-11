@@ -1,6 +1,6 @@
  <head>
         <meta charset="UTF-8">
-
+{% block title %}Article index{% endblock %}
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
         {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
         {% block stylesheets %}
@@ -11,54 +11,45 @@
             {{ encore_entry_script_tags('app') }}
                       {{ encore_entry_script_tags('commentaire') }}
         {% endblock %}
+        
+
     </head>
 
 
 
-{% block title %}Article index{% endblock %}
 
 {% block body %}
-    <h1>Accueil</h1>
+    <h1>Page Article</h1>
+    <main>
     <button class="button-6" role="button" id="myBtn">Ajouter un Article</button>
     <section>
     {% for article in articles %}
-        <div class="article">
-                <p>Id de l'article {{article.id}}</p>
-                <h2> Pseudo : {{article.pseudo}}</h2>
+        <div class="article" id="{{article.id}}">
+                <p >Id de l'article {{article.id}}</p>
+                <h2 id="psd"> Pseudo : {{article.pseudo}}</h2>
                 <article>{{article.description}}</article>                          
 
-            <a class="button-6" role="button" href="{{ path('app_commentaire_show', {'id': article.id}) }}">Ajouter</a>
+            <a class="button-6" role="button" href="{{ path('app_commentaire_show', {'id': article.id}) }}">Voir</a>
             <button class="button-6" role="button" id="myBtnCommentaire">Commenter</button>
 
         </div>
         {% endfor %}
     </section>
-    
-<h2>Modal Example</h2>
-
-<!-- Trigger/Open The Modal -->
+    <main>
 
 
-<!-- The Modal -->
 <div id="myModal" class="modal">
 
-  <!-- Modal content -->
   <div class="modal-content">
     <span class="close">&times;</span>
     {{ include('article/_form.html.twig') }}
-        {# <a class="button-6" role="button"  href="{{ path('app_article_new') }}">Create new</a> #}
-    {# <p>Some text in the Modal..</p> #}
   </div>
 
 </div>
 <div id="myModalComm" class="modal">
-
-  <!-- Modal content -->
   <div class="modal-content">
-    <span class="close">&times;</span>
+    <span class="closeComm">&times;</span>
     {{ include('commentaire/_form.html.twig') }}
-        {# <a class="button-6" role="button"  href="{{ path('app_article_new') }}">Create new</a> #}
-    {# <p>Some text in the Modal..</p> #}
   </div>
 
 </div>
