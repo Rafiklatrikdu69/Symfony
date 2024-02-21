@@ -1,8 +1,52 @@
-<div class="container">
-{{ form_start(form) }}
-{{ form_widget(form) }}
- <button class="button-6" role="button" >{{ button_label|default('Save') }}</button>
- {{ form_end(form) }}
+{# <div class="form-style-5">
+ 
+    <form name="article" method="POST">
+        <div id="article">
+            <div>
+                <label for="article_titre" class="required">Titre</label>
+                <input type="text" id="article_titre" name="article[titre]" required="required" />
+            </div>
+            <div>
+                <label for="article_description" class="required">Description</label>
+                <input type="text" id="article_description" name="article[description]" required="required" maxlength="255" />
+            </div>
+            <div>
+                <label for="article_pseudo" class="required">Pseudo</label>
+                <input type="text" id="article_pseudo" name="article[pseudo]" required="required" maxlength="255" />
+            </div>
+            <div>
+                <label class="required">Categories</label>
+                <div id="article_categories">
 
-</div>
+                <span>    
+                    <label for="article_categories_2">Sport
+                    <input type="checkbox" id="article_categories_2" name="article[categories][]" value="2" /></label> </span> 
+                    
+                    <label for="article_categories_3">Rafik
+                    <input type="checkbox" id="article_categories_3" name="article[categories][]" value="3" />
+                   
+                    </label>
+                    
+                    <label for="article_categories_4">Foot
+                     <input type="checkbox" id="article_categories_4" name="article[categories][]" value="4" />
+                      
+                 
+                    <label for="article_categories_5">HS
+                     <input type="checkbox" id="article_categories_5" name="article[categories][]" value="5" /></label>
+                    </label>
+                </div>
+            </div>
+            <input type="hidden" id="article__token" name="article[_token]" value="985e838e4a.SS4pJVZL531J-3uK_PmPNh36Sttwh5nzm8xUl3CABTw.KERGdAcZ1EgOrTn8qZ7qUGjIJPY_wMig_o0Q2j3pZ3kBSl1RY3iQDQy0FA" />
+        </div>
+        <input type="submit" />
+
+
+    </form>
+
+</div> #}
+
+    {{ form_start(form, {'method': 'POST'}) }}
+    {{ form_widget(form) }} 
+       <input type="submit" />
+    {{ form_end(form) }}
 

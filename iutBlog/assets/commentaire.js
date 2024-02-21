@@ -1,3 +1,8 @@
+
+import './styles/app.css';
+
+// start the Stimulus application
+import './bootstrap';
 // Get the modal
 var modalComm = document.getElementById("myModalComm");
 

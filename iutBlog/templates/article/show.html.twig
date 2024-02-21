@@ -17,7 +17,7 @@
                 <td>{{ comm.pseudo }}</td>
                 <td>
                     <a href="{{ path('app_article_show', {'id': article.id}) }}">show</a>
-                    <a href="{{ path('app_article_edit', {'id': article.id}) }}">edit</a>
+                  
                 </td>
             </tr>
         {% else %}
@@ -32,7 +32,7 @@
 
     <a href="{{ path('app_article_index') }}">back to list</a>
 
-    <a href="{{ path('app_article_edit', {'id': article.id}) }}">edit</a>
+  
 
     {{ include('article/_delete_form.html.twig') }}
 {% endblock %}

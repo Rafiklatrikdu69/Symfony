@@ -16,7 +16,7 @@ class ArticleType extends AbstractType
     {
         $builder
         ->add('titre',TextType::class, [
-            'label' => 'Name',
+            'label' => 'Titre',
             'required' => true,
             ])
             ->add('description')
@@ -24,7 +24,8 @@ class ArticleType extends AbstractType
             ->add('categories', EntityType::class, [
                 'class' => Categorie::class,
                 'choice_label' => 'nom',
-                'multiple' => true,//plusieurs categories
+                'multiple' => true,
+                "expanded"=>true//plusieurs categories
                 ])
                 ;
                 ;

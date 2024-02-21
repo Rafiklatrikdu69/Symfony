@@ -23,7 +23,7 @@ var modal = document.getElementById("myModal");
 
   btn.onclick = function() {
 
- 
+    console.log("click")
     modal.style.display = "block";
   }
  

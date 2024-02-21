@@ -20,20 +20,74 @@
 
 {% block body %}
     <h1>Page Article</h1>
+        <form>
+      <label>Search</label>
+      <input type="text" name="cat"/>
+      <input type="submit" value="Chercher"/>
+    </form action="" method="GET">
     <main>
     <button class="button-6" role="button" id="myBtn">Ajouter un Article</button>
     <section>
-    {% for article in articles %}
-        <div class="article" id="{{article.id}}">
-                <p >Id de l'article {{article.id}}</p>
-                <h2 id="psd"> Pseudo : {{article.pseudo}}</h2>
-                <article>{{article.description}}</article>                          
 
-            <a class="button-6" role="button" href="{{ path('app_commentaire_show', {'id': article.id}) }}">Voir</a>
-            <button class="button-6" role="button" id="myBtnCommentaire">Commenter</button>
+      {% if article_filtre is  defined %}
+          <p>Hello</p>
+          {% for articles in  article_filtre  %}
+        <div class="article" id="{{articles.id}}">
+        {# {% for cat in  articles.categories %}
+        <p>Categorie : {{cat.nom}}</p>
+        {% endfor %} #}
+                
+                <h2 id="psd"> Pseudo : {{articles.pseudo}}</h2>
+                <article>{{articles.description}}</article>                          
 
+            <a class="button-6" role="button" href="{{ path('app_commentaire_show', {'id': articles.id}) }}">Voir</a>
+        
+        
         </div>
         {% endfor %}
+          
+          {% endif %}
+
+
+    {% for article in articles %}
+
+
+
+    <div class="container">
+  <div class="card">
+    <div class="card__header">
+     
+    </div>
+    <div class="card__body">
+      <span class="tag tag-blue"> Pseudo : {{article.pseudo}}</span>
+      <h4>{{article.titre}}</h4>
+      <p>{{article.description}}</p>
+       {% for cat in  article.categories %}
+        <p>Categorie : {{cat.nom}}</p>
+        {%endfor %}
+    </div>
+    <div class="card__footer">
+      <div class="user">
+  
+        <div class="user__info">
+        <a class="button-6" role="button" href="{{ path('app_commentaire_show', {'id': article.id}) }}">Voir</a>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  
+ 
+</div>
+        <div class="article" id="{{article.id}}">
+       
+                
+                
+            
+        
+        </div>
+        {% endfor %}
+  
     </section>
     <main>
 

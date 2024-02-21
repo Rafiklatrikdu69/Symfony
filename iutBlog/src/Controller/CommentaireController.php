@@ -44,14 +44,13 @@ class CommentaireController extends AbstractController
         $form= $this->createForm(CommentaireType::class, $commentaire);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
+            $commentaire->setArticle($article);
             $entityManager->persist($commentaire);
             $entityManager->flush();
-
             return $this->redirectToRoute('app_article_index', [], Response::HTTP_SEE_OTHER);
         }
          return $this->render('commentaire/show.html.twig', [
              'article' => $article,
-             'commentaire'=>$articleRepository->findByExampleField($id),
              'form_comm'=>$form->createView()
          ]);
      }
